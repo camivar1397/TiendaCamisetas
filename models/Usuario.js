@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-//var Rol = mongoose.model('Rol');
+//var Rols = mongoose.model('rols');
 
 var usuario = Schema({
 	idUsuario: Number,
@@ -10,8 +10,8 @@ var usuario = Schema({
     direccionUsuari: String,
     nombreAutenticacion: String,
     contrasenaAutenticacion: String,
-    numTarjeta: String
-    //idRolUsuario: { type: Schema.ObjectId, ref: "Rol" }
+    numTarjeta: String,
+    rol: {type: Schema.Types.ObjectId, ref:'rol'}
 });
 
 module.exports = mongoose.model("Usuario", usuario);

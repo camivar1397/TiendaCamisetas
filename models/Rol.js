@@ -9,4 +9,4 @@ var rol = new Schema({
 	}
 });
 
-module.exports=mongoose.model('Rol',rol);
+module.exports=mongoose.model("rol",rol);

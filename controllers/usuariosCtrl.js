@@ -1,4 +1,5 @@
-var Usuario= require('../models/Usuario');
+var Usuario= require('../models/Usuario');	
+var Rol= require('../models/Rol');	
 
 
 function getUsuarios(req, res){
@@ -6,8 +7,26 @@ function getUsuarios(req, res){
 		if(!usuarios) return res.status(404).send({message: 'No existen Usuarios'});
 		if (error) return res.status(500).send('ERROR:'+error);
 
-		res.send(200, {usuarios})
+		Rol.populate(usuarios,{path:"rol"}, function(err,usuarios){
+			res.send(200, {usuarios});
+		})
+
 	});
+}
+
+function deleteUsuario(req, res){
+	let usuarioId=req.params.usuarioId;
+
+	Usuario.findById(usuarioId, (err, usuario)=>{
+		if(err) res.status(500).send({message: 'Error al borrar el producto: ${err}'});
+
+		usuario.remove(err=>{
+			if(err) res.status(500).send({message: 'Error al borrar el producto: ${err}'});
+			res.status(200).send({message: 'Usuario Borrado'});
+		});
+	});
+
+
 }
 
 function postUsuario(req, res){
@@ -23,7 +42,7 @@ function postUsuario(req, res){
     usuario.nombreAutenticacion=req.body.nombreAutenticacion;
     usuario.contrasenaAutenticacion=req.body.contrasenaAutenticacion;
     usuario.numTarjeta=req.body.numTarjeta;
-    //usuario.idRolUsuario=req.body.idRolUsuario;
+    usuario.rol=req.body.rol;
 
     usuario.save((err, usuarioAlmacenado)=>{
     	if(err) res.status(500).send({message: 'Error al Salvar'});
@@ -33,5 +52,6 @@ function postUsuario(req, res){
 
 module.exports={
 	getUsuarios,
+	deleteUsuario,
 	postUsuario
 }
