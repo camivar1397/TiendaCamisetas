@@ -50,8 +50,19 @@ function postUsuario(req, res){
     })
 }
 
+function updateUsuario(req,res){
+	let usuarioId=req.params.productId
+	let update = req.body
+
+	Usuario.findByIdAndUpdate(usuarioId, update, (err, usuarioUpdate)=>{
+		if(err) res.status(500).send({message: "Error al actualizar el usuario"});
+		res.status(200).send({usuario:usuarioUpdate});
+	})
+}
+
 module.exports={
 	getUsuarios,
 	deleteUsuario,
-	postUsuario
+	postUsuario,
+	updateUsuario
 }

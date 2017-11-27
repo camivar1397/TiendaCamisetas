@@ -16,7 +16,7 @@ function postRol(req, res){
 
 function getRoles(req, res){
 	Rol.find({},(error, roles) =>{
-		if(!roles) return res.status(404).send({message: 'No existen Usuarios'});
+		if(!roles) return res.status(404).send({message: 'No existen Roles'});
 		if (error) return res.status(500).send('ERROR:'+error);
 
 		res.send(200, {roles})
