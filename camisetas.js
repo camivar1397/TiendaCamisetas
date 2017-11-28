@@ -8,13 +8,13 @@ var MongoClient = mongodb.MongoClient;
 
 //Conexión a la Base de Datos y Puerto
 
-MongoClient.connect(process.env.MONGOLAB_URI, (err, res)=>{
+MongoClient.connect('mongodb://heroku_krvrr9dw:i1p6e440ob4k8btc947251js7n@ds121686.mlab.com:21686/heroku_krvrr9dw', (err, res)=>{
 	if(err){
 		return console.log('Sin conexion a la BD');
 	}
 	console.log('Conectada a la Base de Datos');
-	app.listen(process.env.PORT, ()=>{
-	 	console.log("Servidor corre en el puerto");
+	app.listen(21686, ()=>{
+	 	console.log("Servidor corre en el puerto 21686");
 	});
 });
 
