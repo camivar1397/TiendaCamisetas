@@ -14,12 +14,12 @@ app.use('/api', api);
 
 //Conexión a la Base de Datos y Puerto
 
-mongoose.connect('mongodb://localhost/tiendaCamisetas', (err, res)=>{
+mongoose.connect(process.env.MONGODB, (err, res)=>{
 	if(err){
 		return console.log('Sin conexion a la BD');
 	}
 	console.log('Conectada a la Base de Datos');
-	app.listen(8080, ()=>{
+	app.listen(process.env.PORT, ()=>{
 	 	console.log("Servidor corre en el puerto 8080");
 	});
 });
