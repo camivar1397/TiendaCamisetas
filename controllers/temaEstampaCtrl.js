@@ -14,11 +14,11 @@ function postTemaEstampa(req, res){
 }
 
 function getTemaEstampas(req, res){
-	Rol.find({},(error, temaEstampa) =>{
-		if(!temaEstampa) return res.status(404).send({message: 'No existen Temas para estampas'});
+	TemaEstampa.find({},(error, temaEstampas) =>{
+		if(!temaEstampas) return res.status(404).send({message: 'No existen Temas para estampas'});
 		if (error) return res.status(500).send('ERROR:'+error);
 
-		res.send(200, {roles})
+		res.send(200, {temaEstampas})
 	});
 }
 

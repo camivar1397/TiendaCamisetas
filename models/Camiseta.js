@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Material = mongoose.model('Material');
-var EstadoCamiseta = mongoose.model('EstadoCamiseta');
-var PrecioCamiseta = mongoose.model('PrecioCamiseta');
+//var Material = mongoose.model('Material');
+//var EstadoCamiseta = mongoose.model('EstadoCamiseta');
+//var PrecioCamiseta = mongoose.model('PrecioCamiseta');
 
 var camiseta = new Schema({
-	idCamiseta: Number,
     nombreCamiseta: String,
     colorCamiseta: String,//Color Hexadecimal
     imagenCamiseta: String,

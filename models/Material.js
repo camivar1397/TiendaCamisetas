@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var material = new Schema({
-	idMaterial: Number,
 	nombreMaterial: String
 });
 
