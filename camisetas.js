@@ -3,20 +3,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var methodOverride = require("method-override");
 var mongodb = require('mongodb');
+const config = require('/config')
 
 var MongoClient = mongodb.MongoClient;
-
-//Conexión a la Base de Datos y Puerto
-
-MongoClient.connect('mongodb://heroku_krvrr9dw:i1p6e440ob4k8btc947251js7n@ds121686.mlab.com:21686/heroku_krvrr9dw', (err, res)=>{
-	if(err){
-		return console.log('Sin conexion a la BD');
-	}
-	console.log('Conectada a la Base de Datos');
-	app.listen(21686, ()=>{
-	 	console.log("Servidor corre en el puerto 21686");
-	});
-});
 
 var app = express();
 
@@ -26,3 +15,17 @@ app.use(methodOverride());
 
 var api=require('./routes');
 app.use('/api', api);
+
+//Conexión a la Base de Datos y Puerto
+
+mongoose.connect(config.db, (err, res)=>{
+	if(err){
+		return console.log('Sin conexion a la BD');
+	}
+	console.log('Conectada a la Base de Datos');
+	app.listen(config.port, ()=>{
+	 	console.log("Servidor corre en el puerto 21686");
+	});
+});
+
+
