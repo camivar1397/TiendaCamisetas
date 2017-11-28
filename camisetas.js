@@ -19,7 +19,7 @@ mongoose.connect('mongodb://heroku_krvrr9dw:i1p6e440ob4k8btc947251js7n@ds121686.
 		return console.log('Sin conexion a la BD');
 	}
 	console.log('Conectada a la Base de Datos');
-	app.listen(21686, ()=>{
+	/*app.listen(21686, ()=>{
 	 	console.log("Servidor corre en el puerto 8080");
-	});
+	});*/
 });
