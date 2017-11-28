@@ -14,12 +14,12 @@ app.use('/api', api);
 
 //Conexión a la Base de Datos y Puerto
 
-mongoose.connect(process.env.MONGODB, (err, res)=>{
+mongoose.connect('mongodb://heroku_krvrr9dw:i1p6e440ob4k8btc947251js7n@ds121686.mlab.com:21686/heroku_krvrr9dw', (err, res)=>{
 	if(err){
 		return console.log('Sin conexion a la BD');
 	}
 	console.log('Conectada a la Base de Datos');
-	app.listen(process.env.PORT, ()=>{
+	app.listen(21686, ()=>{
 	 	console.log("Servidor corre en el puerto 8080");
 	});
 });
