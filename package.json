@@ -4,6 +4,7 @@
   "description": "TiendaCamisetas",
   "main": "camisetas.js",
   "scripts": {
+    "start": "node camisetas.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "DevelopersDesign",
