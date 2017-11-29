@@ -24,7 +24,20 @@ function getPrecioEstampas(req, res){
 	});
 }
 
+function getPrecioEstampaId(req, res){
+
+	let precioEstampaId=req.params.precioEstampaId;
+
+	PrecioEstampa.find({"_id":precioEstampaId},(error, precioEstampa) =>{
+		if(!precioEstampa) return res.status(404).send({message: 'No existen precios para estampas'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {precioEstampa})
+	});
+}
+
 module.exports={
 	getPrecioEstampas,
+	getPrecioEstampaId,
 	postPrecioEstampa
 }

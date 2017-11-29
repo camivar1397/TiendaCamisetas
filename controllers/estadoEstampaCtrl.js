@@ -22,7 +22,18 @@ function getEstadoEstampa(req, res){
 	});
 }
 
+function getEstadoEstampaId(req, res){
+	let estadoEstampaId=req.params.estadoEstampaId;
+
+	EstadoEstampa.find({"_id": estadoEstampaId},(error, estadoEstampa) =>{
+		if(!estadoEstampa) return res.status(404).send({message: 'No existen estados de estampa'});
+		if (error) return res.status(500).send('ERROR:'+error);
+		res.send(200, {estadoEstampa})
+	});
+}
+
 module.exports={
 	getEstadoEstampa,
+	getEstadoEstampaId,
 	postEstadoEstampa
 }

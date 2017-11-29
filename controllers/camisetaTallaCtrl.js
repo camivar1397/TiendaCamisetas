@@ -23,7 +23,29 @@ function getCamisetaTalla(req, res){
 	});
 }
 
+function getCamisetaTallaId(req, res){
+	let camisetaTallaId=req.params.camisetaTallaId;
+	CamisetaTalla.find({"_id":camisetaTallaId},(error, camisetaTalla) =>{
+		if(!camisetaTalla) return res.status(404).send({message: 'No existen CamisetaTalla'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {camisetaTalla})
+	});
+}
+
+function getCamisetaTallaCamiseta(req, res){
+	let camisetaId=req.params.camisetaId;
+	CamisetaTalla.find({"idCamisetaCT":camisetaId},(error, camisetaTalla) =>{
+		if(!camisetaTalla) return res.status(404).send({message: 'No existen CamisetaTalla'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {camisetaTalla})
+	});
+}
+
 module.exports={
 	getCamisetaTalla,
+	getCamisetaTallaId,
+	getCamisetaTallaCamiseta,
 	postCamisetaTalla
 }

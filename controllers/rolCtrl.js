@@ -23,7 +23,19 @@ function getRoles(req, res){
 	});
 }
 
+function getRolId(req, res){
+	let rolId=req.params.rolId;
+
+	Rol.find({"_id":rolId},(error, roles) =>{
+		if(!roles) return res.status(404).send({message: 'No existen Roles'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {roles})
+	});
+}
+
 module.exports={
 	getRoles,
+	getRolId,
 	postRol
 }

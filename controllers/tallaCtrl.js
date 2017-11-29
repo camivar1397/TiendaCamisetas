@@ -22,7 +22,18 @@ function getTalla(req, res){
 	});
 }
 
+function getTallaId(req, res){
+	let tallaId=req.params.tallaId;
+	Talla.find({"_id":tallaId},(error, talla) =>{
+		if(!talla) return res.status(404).send({message: 'No existen Tallas'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {talla})
+	});
+}
+
 module.exports={
 	getTalla,
+	getTallaId,
 	postTalla
 }

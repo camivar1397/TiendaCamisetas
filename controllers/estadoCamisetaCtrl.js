@@ -22,7 +22,19 @@ function getEstadoCamiseta(req, res){
 	});
 }
 
+function getEstadoCamiseta(req, res){
+
+	let estadoCamisetaId=req.params.estadoCamisetaId;
+
+	EstadoCamiseta.find({"_id":estadoCamisetaId},(error, estadoCamiseta) =>{
+		if(!estadoCamiseta) return res.status(404).send({message: 'No existen estados de estampa'});
+		if (error) return res.status(500).send('ERROR:'+error);
+		res.send(200, {estadoCamiseta})
+	});
+}
+
 module.exports={
 	getEstadoCamiseta,
+	getEstadoCamisetaId,
 	postEstadoCamiseta
 }

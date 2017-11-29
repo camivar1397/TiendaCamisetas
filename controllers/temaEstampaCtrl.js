@@ -22,7 +22,18 @@ function getTemaEstampas(req, res){
 	});
 }
 
+function getTemaEstampaId(req, res){
+	let temaEstampaId=req.params.estadoEstampaId;
+	TemaEstampa.find({"_id":temaEstampaId},(error, temaEstampas) =>{
+		if(!temaEstampas) return res.status(404).send({message: 'No existen Temas para estampas'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {temaEstampas})
+	});
+}
+
 module.exports={
 	getTemaEstampas,
+	getTemaEstampaId,
 	postTemaEstampa
 }

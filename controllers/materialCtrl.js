@@ -22,7 +22,19 @@ function getMaterial(req, res){
 	});
 }
 
+function getMaterialId(req, res){
+
+	let materialId=req.params.materialId;
+	Material.find({"_id":materialId},(error, material) =>{
+		if(!material) return res.status(404).send({message: 'No existen Materiales'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {material})
+	});
+}
+
 module.exports={
 	getMaterial,
+	getMaterialId,
 	postMaterial
 }

@@ -22,20 +22,42 @@ function getEstampas(req, res){
 	});*/
 }
 
-/*function deleteUsuario(req, res){
-	let usuarioId=req.params.usuarioId;
+function getEstampaId(req, res){
 
-	Usuario.findById(usuarioId, (err, usuario)=>{
-		if(err) res.status(500).send({message: 'Error al borrar el producto: ${err}'});
+	let estampaId=req.params.estampaId;
 
-		usuario.remove(err=>{
-			if(err) res.status(500).send({message: 'Error al borrar el producto: ${err}'});
-			res.status(200).send({message: 'Usuario Borrado'});
-		});
+	Estampa.find({"_id":estampaId},(error, estampa) =>{
+		if(!estampa) return res.status(404).send({message: 'No existen Estampa'});
+		if (error) return res.status(500).send('ERROR:'+error);
+	}).populate('Usuario Tema EstadoEstampa PrecioEstampa').exec(function (err, results){
+		res.send(200,{results})
 	});
+}
 
+function getEstampaArtista(req, res){
 
-}*/
+	let artistaId=req.params.artistaId;
+
+	Estampa.find({"idUsuarioEstampa":artistaId},(error, estampa) =>{
+		if(!estampa) return res.status(404).send({message: 'No existen Estampa'});
+		if (error) return res.status(500).send('ERROR:'+error);
+	}).populate('Usuario Tema EstadoEstampa PrecioEstampa').exec(function (err, results){
+		res.send(200,{results})
+	});
+}
+
+function getEstampaTema(req, res){
+
+	let temaId=req.params.temaId;
+
+	Estampa.find({"idTemaEstampa":temaId},(error, estampa) =>{
+		if(!estampa) return res.status(404).send({message: 'No existen Estampa'});
+		if (error) return res.status(500).send('ERROR:'+error);
+	}).populate('Usuario Tema EstadoEstampa PrecioEstampa').exec(function (err, results){
+		res.send(200,{results})
+	});
+}
+
 
 function postEstampa(req, res){
 	console.log('POST /api/estampa');
@@ -55,17 +77,10 @@ function postEstampa(req, res){
     })
 }
 
-/*function updateUsuario(req,res){
-	let usuarioId=req.params.productId
-	let update = req.body
-
-	Usuario.findByIdAndUpdate(usuarioId, update, (err, usuarioUpdate)=>{
-		if(err) res.status(500).send({message: "Error al actualizar el usuario"});
-		res.status(200).send({usuario:usuarioUpdate});
-	})
-}*/
-
 module.exports={
 	getEstampas,
+	getEstampaTema,
+	getEstampaArtista,
+	getEstampaId,
 	postEstampa
 }

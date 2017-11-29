@@ -24,7 +24,20 @@ function getPrecioCamiseta(req, res){
 	});
 }
 
+function getPrecioCamisetaId(req, res){
+
+	let precioCamisetaId=req.params.precioCamisetaId;
+
+	PrecioCamiseta.find({"_id":precioCamisetaId},(error, precioCamiseta) =>{
+		if(!precioCamiseta) return res.status(404).send({message: 'No existen precios para Camisetas'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {precioCamiseta})
+	});
+}
+
 module.exports={
 	getPrecioCamiseta,
+	getPrecioCamisetaId,
 	postPrecioCamiseta
 }
