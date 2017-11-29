@@ -74,17 +74,24 @@ api.get('/material/:materialId', MaterialCtrl.getMaterialId);
 
 api.get('/estadoPedido', EstadoPedidoCtrl.getEstadoPedido);
 api.post('/estadoPedido', EstadoPedidoCtrl.postEstadoPedido);
+api.get('/estadoPedido/:estadoPedidoId', EstadoPedidoCtrl.getEstadoPedidoId);
 
 api.get('/estadoTransaccion', EstadoTransaccionCtrl.getEstadoTransaccion);
 api.post('/estadoTransaccion', EstadoTransaccionCtrl.postEstadoTransaccion);
+api.get('/estadoTransaccion/:estadoTransaccionId', EstadoTransaccionCtrl.getEstadoTransaccionId);
 
 api.get('/carroCompras', CarroComprasCtrl.getCarroCompras);
 api.post('/carroCompras', CarroComprasCtrl.postCarroCompras);
+api.get('/carroCompras/:carroComprasId', CarroComprasCtrl.getCarroComprasId);
+api.get('/carroCompras/usuario/:usuarioId', CarroComprasCtrl.getCarroComprasUsuario);
 
 api.get('/pedido', PedidoCtrl.getPedido);
 api.post('/pedido', PedidoCtrl.postPedido);
+api.get('/pedido/:pedidoId', PedidoCtrl.getPedidoId);
+api.get('/pedido/CarroCompras/:carComId', PedidoCtrl.getPedidoId);
 
 api.get('/transaccion', TransaccionCtrl.getTransaccion);
 api.post('/transaccion', TransaccionCtrl.postTransaccion);
+api.get('/transaccion/CarroCompras/:carroCompraId', TransaccionCtrl.getTransaccionCarCom);
 
 module.exports=api;

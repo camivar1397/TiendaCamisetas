@@ -28,7 +28,33 @@ function getPedido(req, res){
 	});
 }
 
+function getPedidoId(req, res){
+
+	let pedidoId=req.params.pedidoId;
+
+	Pedido.find({"_id":pedidoId},(error, pedido) =>{
+		if(!pedido) return res.status(404).send({message: 'No existen Pedidos'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {pedido})
+	});
+}
+
+function getPedidoCarCom(req, res){
+
+	let carComId=req.params.carComId;
+
+	Pedido.find({"idCarroComprasPedido":carComId},(error, pedido) =>{
+		if(!pedido) return res.status(404).send({message: 'No existen Pedidos'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {pedido})
+	});
+}
+
 module.exports={
 	getPedido,
+	getPedidoId,
+	getPedidoCarCom,
 	postPedido
 }

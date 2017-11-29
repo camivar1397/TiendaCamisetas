@@ -22,7 +22,19 @@ function getEstadoPedido(req, res){
 	});
 }
 
+function getEstadoPedidoId(req, res){
+
+	let estadoPedidoId=req.params.estadoPedidoId;
+
+	EstadoPedido.find({"_id":estadoPedidoId},(error, estadoPedido) =>{
+		if(!estadoPedido) return res.status(404).send({message: 'No existen estados de pedido'});
+		if (error) return res.status(500).send('ERROR:'+error);
+		res.send(200, {estadoPedido})
+	});
+}
+
 module.exports={
 	getEstadoPedido,
+	getEstadoPedidoId,
 	postEstadoPedido
 }

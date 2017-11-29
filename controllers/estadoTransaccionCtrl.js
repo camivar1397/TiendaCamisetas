@@ -22,7 +22,19 @@ function getEstadoTransaccion(req, res){
 	});
 }
 
+function getEstadoTransaccionId(req, res){
+	
+	let estadoTransaccionId=req.params.estadoTransaccionId;
+
+	EstadoTransaccion.find({"_id":estadoTransaccionId},(error, estadoTransaccion) =>{
+		if(!estadoTransaccion) return res.status(404).send({message: 'No existen estados de transaccion'});
+		if (error) return res.status(500).send('ERROR:'+error);
+		res.send(200, {estadoTransaccion})
+	});
+}
+
 module.exports={
 	getEstadoTransaccion,
+	getEstadoTransaccionId,
 	postEstadoTransaccion
 }

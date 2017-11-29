@@ -24,7 +24,18 @@ function getTransaccion(req, res){
 	});
 }
 
+function getTransaccionCarCom(req, res){
+	let carroCompraId=req.params.carroCompraId;
+	Transaccion.find({"idCarroComprasT":carroCompraId},(error, transaccion) =>{
+		if(!transaccion) return res.status(404).send({message: 'No existen Transacciones'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		res.send(200, {transaccion})
+	});
+}
+
 module.exports={
 	getTransaccion,
+	getTransaccionCarCom,
 	postTransaccion
 }
