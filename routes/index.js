@@ -12,6 +12,11 @@ const CamisetaCtrl = require('../controllers/camisetaCtrl');
 const TallaCtrl = require('../controllers/tallaCtrl');
 const CamisetaTallaCtrl = require('../controllers/camisetaTallaCtrl');
 const MaterialCtrl = require('../controllers/materialCtrl');
+const EstadoPedidoCtrl = require('../controllers/estadoPedidoCtrl');
+const EstadoTransaccionCtrl = require('../controllers/estadoTransaccionCtrl');
+const CarroComprasCtrl = require('../controllers/carroComprasCtrl');
+const PedidoCtrl = require('../controllers/pedidoCtrl');
+const TransaccionCtrl = require('../controllers/transaccionCtrl');
 
 api.get('/usuario', UsuariosCtrl.getUsuarios);
 api.post('/usuario', UsuariosCtrl.postUsuario);
@@ -49,5 +54,20 @@ api.post('/camisetaTalla', CamisetaTallaCtrl.postCamisetaTalla);
 
 api.get('/material', MaterialCtrl.getMaterial);
 api.post('/material', MaterialCtrl.postMaterial);
+
+api.get('/estadoPedido', EstadoPedidoCtrl.getEstadoPedido);
+api.post('/estadoPedido', EstadoPedidoCtrl.postEstadoPedido);
+
+api.get('/estadoTransaccion', EstadoTransaccionCtrl.getEstadoTransaccion);
+api.post('/estadoTransaccion', EstadoTransaccionCtrl.postEstadoTransaccion);
+
+api.get('/carroCompras', CarroComprasCtrl.getCarroCompras);
+api.post('/carroCompras', CarroComprasCtrl.postCarroCompras);
+
+api.get('/pedido', PedidoCtrl.getPedido);
+api.post('/pedido', PedidoCtrl.postPedido);
+
+api.get('/transaccion', TransaccionCtrl.getTransaccion);
+api.post('/transaccion', TransaccionCtrl.postTransaccion);
 
 module.exports=api;
