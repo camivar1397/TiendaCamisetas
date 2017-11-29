@@ -14,6 +14,21 @@ function getUsuarios(req, res){
 	});
 }
 
+function getUsuarioId(req, res){
+
+	let usuarioId=req.params.usuarioId;
+
+	Usuario.find({"_id": usuarioId},(error, usuarios) =>{
+		if(!usuarios) return res.status(404).send({message: 'No existen Usuarios'});
+		if (error) return res.status(500).send('ERROR:'+error);
+
+		Rol.populate(usuarios,{path:"rol"}, function(err,usuarios){
+			res.send(200, {usuarios});
+		})
+
+	});
+}
+
 function deleteUsuario(req, res){
 	let usuarioId=req.params.usuarioId;
 
@@ -64,5 +79,6 @@ module.exports={
 	getUsuarios,
 	deleteUsuario,
 	postUsuario,
-	updateUsuario
+	updateUsuario,
+	getUsuarioId
 }

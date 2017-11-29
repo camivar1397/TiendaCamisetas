@@ -21,6 +21,7 @@ const TransaccionCtrl = require('../controllers/transaccionCtrl');
 api.get('/usuario', UsuariosCtrl.getUsuarios);
 api.post('/usuario', UsuariosCtrl.postUsuario);
 api.delete('/usuario/:usuarioId', UsuariosCtrl.deleteUsuario);
+api.get('/usuario/:usuarioId', UsuariosCtrl.getUsuarioId);
 
 api.get('/rol', RolCtrl.getRoles);
 api.post('/rol', RolCtrl.postRol);
