@@ -22,7 +22,7 @@ function getEstadoCamiseta(req, res){
 	});
 }
 
-function getEstadoCamiseta(req, res){
+function getEstadoCamisetaId(req, res){
 
 	let estadoCamisetaId=req.params.estadoCamisetaId;
 
