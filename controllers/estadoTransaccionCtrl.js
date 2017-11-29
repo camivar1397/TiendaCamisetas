@@ -23,6 +23,6 @@ function getEstadoTransaccion(req, res){
 }
 
 module.exports={
-	getEstadoPedido,
-	postEstadoPedido
+	getEstadoTransaccion,
+	postEstadoTransaccion
 }
